@@ -38,3 +38,34 @@ document.getElementById("amount").value=""
 
 render()
 </script>
+let chart
+
+function drawChart(){
+
+let income = 0
+let expenses = 0
+
+transactions.forEach(t=>{
+if(t.amount > 0){
+income += t.amount
+}else{
+expenses += Math.abs(t.amount)
+}
+})
+
+let ctx = document.getElementById("chart")
+
+if(chart){
+chart.destroy()
+}
+
+chart = new Chart(ctx,{
+type:'pie',
+data:{
+labels:['Income','Expenses'],
+datasets:[{
+data:[income,expenses]
+}]
+}
+})
+}
