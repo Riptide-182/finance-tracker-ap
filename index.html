@@ -83,10 +83,18 @@ let list = document.getElementById("list")
 list.innerHTML = ""
 balance = 0
 
-transactions.forEach(t=>{
+transactions.forEach((t,index)=>{
 
 let li = document.createElement("li")
-li.textContent = t.desc + " : $" + t.amount
+
+li.textContent = t.desc + " : $" + t.amount + " (tap to delete)"
+
+li.onclick = function(){
+transactions.splice(index,1)
+save()
+render()
+}
+
 list.appendChild(li)
 
 balance += t.amount
