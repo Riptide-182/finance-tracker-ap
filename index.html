@@ -54,7 +54,7 @@ expenses += Math.abs(t.amount)
 }
 })
 
-let ctx = document.getElementById("chart")
+let ctx = document.getElementById("chart").getContext("2d")
 
 if(chart){
 chart.destroy()
